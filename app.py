@@ -5,6 +5,10 @@ from google import genai
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def home():
+    return "Dev Nirmaan Solutions WhatsApp Bot is Live!", 200
+
 # Initialize the Gemini client (it automatically picks up GEMINI_API_KEY from environment variables)
 client = genai.Client()
 
@@ -53,7 +57,7 @@ def webhook():
                             # Send reply back via WhatsApp Cloud API
                             headers = {
                                 "Authorization": f"Bearer {WHATSAPP_TOKEN}",
-                                "Content_Type": "application/json"
+                                "Content-Type": "application/json"
                             }
                             payload = {
                                 "messaging_product": "whatsapp",

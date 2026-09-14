@@ -47,7 +47,7 @@ def webhook():
                         message_body = message.get("text", {}).get("body", "")
 
                         if message_body:
-                            # Generate response using correct model name
+                            # Generate response using the correct current Gemini model
                             response = client.models.generate_content(
                                 model='gemini-2.5-flash',
                                 contents=f"{SYSTEM_PROMPT}\n\nग्राहक का संदेश: {message_body}"
